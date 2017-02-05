@@ -8,6 +8,9 @@ import java.awt.BorderLayout;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
+
+import model.connection.DBConnection;
+
 import javax.swing.Box;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -18,6 +21,9 @@ import javax.swing.JSplitPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.sql.SQLException;
 
 public class RegisterWindow {
 
@@ -140,6 +146,12 @@ public class RegisterWindow {
 		textField_3.setColumns(10);
 		
 		JButton btnGuardarRegistro = new JButton("Guardar Registro");
+		btnGuardarRegistro.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				
+			}
+		});
 		btnGuardarRegistro.setBounds(40, 288, 139, 23);
 		frame.getContentPane().add(btnGuardarRegistro);
 		
