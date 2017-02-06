@@ -12,7 +12,8 @@ public class Principal {
 	RegisterWindow myRegisterWindow;
 	
 	public static void main(String[] args) {
-		
+		Principal myPrincipal = new Principal();
+		myPrincipal.beguin();
 	}//end of main
 
 	
@@ -26,16 +27,17 @@ public class Principal {
 		myCoordinator = new Coordinator();
 		myRegisterWindow = new RegisterWindow();
 		
-		/** se crean las realciones entre clases **/
-		myLogic.setMyCordinator(myCoordinator);
-		myRegisterWindow.setMyCoordinator(myCoordinator);
-		
 		/** se establecen las relaciones con la clase coordinator **/
 		myCoordinator.setMyLogic(myLogic);
 		myCoordinator.setRw(myRegisterWindow);
 		
+		/** se crean las realciones entre clases **/
+		myLogic.setMyCordinator(myCoordinator);
+		myRegisterWindow.setMyCoordinator(myCoordinator);
+		
+		
 		/** se muesta la ventana principal del sistema **/
-		myRegisterWindow.setVisible(true);
+		myCoordinator.ShowRegisterWindow();
 	}//end of method
 	
 }//end of class

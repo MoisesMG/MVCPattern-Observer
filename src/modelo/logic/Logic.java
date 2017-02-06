@@ -15,6 +15,9 @@ public class Logic {
 	private Coordinator myCordinator;
 	private PersonDAO personDao;
 
+	public Logic(){
+		personDao = new PersonDAO();
+	}
 	public void setMyCordinator(Coordinator myCordinator) {
 		this.myCordinator = myCordinator;
 	}//end of method

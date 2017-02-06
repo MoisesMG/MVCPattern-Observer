@@ -20,12 +20,7 @@ public class Coordinator {
 	private RegisterWindow rw;
 	
 	/** gettters and setters **/
-	public Logic getMyLogic() {
-		return myLogic;
-	}
-	public RegisterWindow getRw() {
-		return rw;
-	}
+	
 	public void setMyLogic(Logic myLogic) {
 		this.myLogic = myLogic;
 	}

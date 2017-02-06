@@ -12,6 +12,7 @@ import com.jgoodies.forms.layout.RowSpec;
 import controller.Coordinator;
 import model.connection.DBConnection;
 import model.dao.DepartmentDAO;
+import model.dao.PersonDAO;
 import model.vo.DepartmentVO;
 import model.vo.PersonVO;
 
@@ -60,7 +61,7 @@ public class RegisterWindow extends JFrame implements ActionListener{
 	
 	public RegisterWindow() {
 		initialize();
-		fillComboBoxes();
+		
 		
 	}
 	
@@ -68,17 +69,7 @@ public class RegisterWindow extends JFrame implements ActionListener{
 		this.myCoordinator = myCoordinator;
 	}//end of method
 	
-	private void fillComboBoxes(){
-		cmbDepartment.removeAll();
-		listOfDepartments= new ArrayList<DepartmentVO>();
-		DepartmentDAO depDao = new DepartmentDAO();
-		listOfDepartments = depDao.recoverDepartments();
-		for(int i = 0; i < listOfDepartments.size(); i++){
-			DepartmentVO temp = listOfDepartments.get(i);
-			System.out.println(temp.getDepartmentName());
-			cmbDepartment.addItem(temp.getDepartmentName());
-		}
-	}//end of method
+	
 	
 	private void initialize() {
 		
@@ -181,7 +172,8 @@ public class RegisterWindow extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent even) {
 		if(even.getSource()==btnSaveRecord){
-			try{
+			
+//			try{
 				PersonVO myPerson = new PersonVO();
 				myPerson.setName(txtName.getText());
 				myPerson.setLastname(txtLastName.getText());
@@ -192,9 +184,11 @@ public class RegisterWindow extends JFrame implements ActionListener{
 				myPerson.setBornMunicipally(1);
 				myPerson.setIdentification(txtIdentification.getText());
 				myCoordinator.savePersonRecord(myPerson);
-			}catch(Exception ex){
-				System.out.println(ex.getMessage());
-			}
+//				PersonDAO dao = new PersonDAO();
+//				dao.savePersonRecord(myPerson);
+//			}catch(Exception ex){
+//				System.out.println(ex.getMessage() + "\nError - RegisterWindows");
+//			}
 		}
 		
 	}//end of method
