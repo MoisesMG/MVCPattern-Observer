@@ -5,11 +5,13 @@ import java.sql.*;
 import com.mysql.jdbc.Connection;
 
 public class DBConnection {
-	public static String url;
-	static java.sql.Connection connection;
+	public static java.sql.Connection connection;
 	
-	public static boolean ConnectDataBase(String db, String user, String pwd) throws SQLException{
-		url = "jdbc:mysql://localhost/"+db;
+	public static boolean ConnectDataBase() throws SQLException{
+		String db = "testmvc";
+		String user = "root";
+		String pwd = "1234";
+		String url = "jdbc:mysql://localhost/"+db;
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			connection = DriverManager.getConnection(url, user, pwd);
@@ -28,5 +30,14 @@ public class DBConnection {
 		     System.out.println(e);
 		}
 		return false;
-	}//fin del metodo static
-}//fin de la clase
+	}//end of method
+	
+	public static void DisconnectDB(){
+		try {
+			connection.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}//end of class
