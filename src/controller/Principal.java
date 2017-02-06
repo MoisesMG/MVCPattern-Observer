@@ -3,6 +3,7 @@ package controller;
 import model.dao.PersonDAO;
 import model.vo.PersonVO;
 import modelo.logic.Logic;
+import view.ListOfRecords;
 import view.RegisterWindow;
 
 public class Principal {
@@ -38,6 +39,8 @@ public class Principal {
 		
 		/** se muesta la ventana principal del sistema **/
 		myCoordinator.ShowRegisterWindow();
+		ListOfRecords l = new ListOfRecords();
+		l.setVisible(true);
 	}//end of method
 	
 }//end of class

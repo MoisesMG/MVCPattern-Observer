@@ -1,6 +1,8 @@
 package model.dao;
 import model.vo.PersonVO;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import model.connection.*;
@@ -25,5 +27,20 @@ public class PersonDAO {
 			System.out.println(e.getMessage());
 			System.out.print("No se realizo el registro - PersonaDAO");
 		}
+	}//end of method
+	
+	public ResultSet listRecord(){
+		String query = "SELECT * FROM person";
+		ResultSet rs = null;
+		try{
+			DBConnection.ConnectDataBase();
+			PreparedStatement pst = DBConnection.connection.prepareStatement(query);
+			rs = pst.executeQuery();
+		}catch(SQLException e){
+			System.out.println(e.getMessage());
+			System.out.println("No se resalizo la consulta - PersonaDAO");
+		}
+		
+		return rs;
 	}//end of method
 }//end of class
