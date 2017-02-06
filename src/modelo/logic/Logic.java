@@ -1,5 +1,7 @@
 package modelo.logic;
 
+import java.sql.ResultSet;
+
 import controller.Coordinator;
 import model.dao.PersonDAO;
 import model.vo.PersonVO;

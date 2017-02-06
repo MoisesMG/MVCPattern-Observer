@@ -11,6 +11,7 @@ public class Principal {
 	Logic myLogic;
 	Coordinator myCoordinator;
 	RegisterWindow myRegisterWindow;
+	ListOfRecords myListRecords;
 	
 	public static void main(String[] args) {
 		Principal myPrincipal = new Principal();
@@ -27,20 +28,22 @@ public class Principal {
 		myLogic = new Logic();
 		myCoordinator = new Coordinator();
 		myRegisterWindow = new RegisterWindow();
+		myListRecords = new ListOfRecords();
 		
 		/** se establecen las relaciones con la clase coordinator **/
 		myCoordinator.setMyLogic(myLogic);
 		myCoordinator.setRw(myRegisterWindow);
-		
+		myCoordinator.setMyListOfRecords(myListRecords);
+		myCoordinator.addObserver(myListRecords);
 		/** se crean las realciones entre clases **/
 		myLogic.setMyCordinator(myCoordinator);
 		myRegisterWindow.setMyCoordinator(myCoordinator);
+		myListRecords.setMyCoordinator(myCoordinator);
 		
 		
 		/** se muesta la ventana principal del sistema **/
 		myCoordinator.ShowRegisterWindow();
-		ListOfRecords l = new ListOfRecords();
-		l.setVisible(true);
+		myCoordinator.showListRecord();
 	}//end of method
 	
 }//end of class

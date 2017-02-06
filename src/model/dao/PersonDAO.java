@@ -5,6 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import javax.naming.spi.DirStateFactory.Result;
+
 import model.connection.*;
 
 public class PersonDAO {
@@ -43,4 +46,25 @@ public class PersonDAO {
 		
 		return rs;
 	}//end of method
+	
+	public ResultSet obtainLastRow(){
+		String query = "SELECT * FROM person where idperson = (" +
+							"SELECT count(*) FROM person);";
+		ResultSet rs = null;
+		try{
+			DBConnection.ConnectDataBase();
+			PreparedStatement pst = DBConnection.connection.prepareStatement(query);
+			rs = pst.executeQuery();
+		}catch(SQLException e){
+			System.out.println(e.getMessage());
+			System.out.println("Error - person DAO");
+		}
+		return rs;
+	}//end of method
 }//end of class
+
+
+
+
+
+
